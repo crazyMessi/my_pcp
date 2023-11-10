@@ -1,0 +1,104 @@
+TensorFlow 2.0 Upgrade Script
+-----------------------------
+Converted 1 files
+Detected 4 issues that require attention
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+File: pcp.py
+--------------------------------------------------------------------------------
+pcp.py:163:10: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+pcp.py:659:16: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+pcp.py:661:8: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+pcp.py:696:20: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+================================================================================
+Detailed log follows:
+
+================================================================================
+--------------------------------------------------------------------------------
+Processing file 'pcp.py'
+ outputting to 'pcp2.py'
+--------------------------------------------------------------------------------
+
+11:0: INFO: Renamed 'tf.disable_v2_behavior' to 'tf.compat.v1.disable_v2_behavior'
+112:7: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+121:29: INFO: tf.constant_initializer requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+121:29: INFO: Renamed 'tf.constant_initializer' to 'tf.compat.v1.constant_initializer'
+143:7: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+146:14: INFO: Added keywords to args of function 'tf.nn.max_pool'
+146:14: INFO: Renamed keyword argument for tf.nn.max_pool from value to input
+146:14: INFO: Renamed 'tf.nn.max_pool' to 'tf.nn.max_pool2d'
+163:10: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+163:10: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+184:18: INFO: Changing tf.contrib.layers xavier initializer to a tf.compat.v1.keras.initializers.VarianceScaling and converting arguments.
+
+186:18: INFO: tf.truncated_normal_initializer requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+186:18: INFO: Renamed 'tf.truncated_normal_initializer' to 'tf.compat.v1.truncated_normal_initializer'
+190:4: INFO: Renamed 'tf.add_to_collection' to 'tf.compat.v1.add_to_collection'
+226:7: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+237:16: INFO: Added keywords to args of function 'tf.nn.conv2d'
+237:16: INFO: Renamed keyword argument for tf.nn.conv2d from filter to filters
+241:32: INFO: tf.constant_initializer requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+241:32: INFO: Renamed 'tf.constant_initializer' to 'tf.compat.v1.constant_initializer'
+331:17: INFO: Added keywords to args of function 'tf.reduce_sum'
+518:16: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+519:18: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+520:12: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+521:20: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+522:19: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+523:12: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+526:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+526:42: INFO: Renamed 'tf.AUTO_REUSE' to 'tf.compat.v1.AUTO_REUSE'
+527:31: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+528:25: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+531:13: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+531:48: INFO: Renamed 'tf.AUTO_REUSE' to 'tf.compat.v1.AUTO_REUSE'
+533:21: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+534:34: INFO: tf.constant_initializer requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+534:34: INFO: Renamed 'tf.constant_initializer' to 'tf.compat.v1.constant_initializer'
+535:36: INFO: tf.random_normal_initializer requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+535:36: INFO: Renamed 'tf.random_normal_initializer' to 'tf.compat.v1.random_normal_initializer'
+536:26: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+538:22: INFO: tf.constant_initializer requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+538:22: INFO: Renamed 'tf.constant_initializer' to 'tf.compat.v1.constant_initializer'
+539:24: INFO: tf.random_normal_initializer requires manual check. Initializers no longer have the dtype argument in the constructor or partition_info argument in the __call__ method.
+The calls have been converted to compat.v1 for safety (even though they may already have been correct).
+539:24: INFO: Renamed 'tf.random_normal_initializer' to 'tf.compat.v1.random_normal_initializer'
+541:14: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+553:25: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+554:23: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+555:17: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+568:9: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+568:43: INFO: Renamed 'tf.AUTO_REUSE' to 'tf.compat.v1.AUTO_REUSE'
+569:31: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+570:27: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+574:20: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+576:25: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+577:19: INFO: Renamed 'tf.layers.dense' to 'tf.compat.v1.layers.dense'
+583:9: INFO: Added keywords to args of function 'tf.reduce_mean'
+583:24: INFO: Added keywords to args of function 'tf.norm'
+588:5: INFO: Renamed 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+588:41: INFO: Renamed 'tf.AUTO_REUSE' to 'tf.compat.v1.AUTO_REUSE'
+603:7: INFO: Added keywords to args of function 'tf.reduce_mean'
+603:22: INFO: Added keywords to args of function 'tf.norm'
+605:9: INFO: Renamed 'tf.trainable_variables' to 'tf.compat.v1.trainable_variables'
+606:8: INFO: Renamed 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+610:14: INFO: Renamed 'tf.get_collection' to 'tf.compat.v1.get_collection'
+610:32: INFO: Renamed 'tf.GraphKeys' to 'tf.compat.v1.GraphKeys'
+616:9: INFO: Renamed 'tf.ConfigProto' to 'tf.compat.v1.ConfigProto'
+617:16: INFO: Renamed 'tf.train.Saver' to 'tf.compat.v1.train.Saver'
+618:8: INFO: Renamed 'tf.train.Saver' to 'tf.compat.v1.train.Saver'
+623:5: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+637:17: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+659:16: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+661:8: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+670:21: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+696:20: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+723:17: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+--------------------------------------------------------------------------------
+

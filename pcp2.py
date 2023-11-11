@@ -35,6 +35,7 @@ parser.add_argument('--data_dir', type=str, default="test.ply")
 parser.add_argument('--CUDA', type=int, default=0)
 parser.add_argument('--OUTPUT_DIR_LOCAL', type=str, default="test.ply")
 parser.add_argument('--OUTPUT_DIR_GLOBAL', type=str, default="test.ply")
+parser.add_argument('--tt', type=float,default=0.5)    
 a = parser.parse_args()
 
 cuda_idx = str(a.CUDA)
@@ -350,7 +351,7 @@ def get_data_from_filename(filename):
     #print(input_points_bs)
     return point.astype(np.float32), sample.astype(np.float32)
 
-def sample_query_points(input_ply_file):
+def sample_query_points(input_ply_file,ttarg=0.5):
     data = PlyData.read(a.data_dir + input_ply_file)
     v = data['vertex'].data
     v = np.asarray(v)
@@ -396,9 +397,9 @@ def sample_query_points(input_ply_file):
         sigmas = np.concatenate(sigmas)
         sigmas_big = 0.2 * np.ones_like(sigmas)
         sigmas = sigmas
-        
+
         #tt = pnts + 0.5*0.25*np.expand_dims(sigmas,-1) * np.random.normal(0.0, 1.0, size=pnts.shape)
-        tt = pnts + 0.5*np.expand_dims(sigmas,-1) * np.random.normal(0.0, 1.0, size=pnts.shape)
+        tt = pnts + ttarg*np.expand_dims(sigmas,-1) * np.random.normal(0.0, 1.0, size=pnts.shape)
         #tt = pnts + 1*np.expand_dims(sigmas_big,-1) * np.random.normal(0.0, 1.0, size=pnts.shape)
         sample.append(tt)
         distances, vertex_ids = gt_kd_tree.query(tt, p=2, k = 1)
@@ -475,8 +476,9 @@ def sample_query_points(input_ply_file):
     for iv in range(len(sample_part)):
             #print(np.asarray(sample[iv]).shape)
             np.savez(a.data_dir + input_ply_file + '_' + str(iv), sample = sample_part[iv],sample_near = sample_near_part[iv])
+ttarg = a.tt
 if(a.train):
-    sample_query_points(a.input_ply_file)
+    sample_query_points(a.input_ply_file,a.tt)
 mm = 0
 files = []
 files_path = []
